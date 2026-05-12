@@ -1,0 +1,40 @@
+name: Test basic usage - Azure ACR Build
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Verify action.yml exists
+        run: |
+          if [ ! -f "action.yml" ]; then
+            echo "FAIL: action.yml not found"
+            exit 1
+          fi
+          echo "PASS: action.yml found"
+      - name: Verify action uses Docker
+        run: |
+          if ! grep -q 'using: "docker"' action.yml; then
+            echo "FAIL: action does not use docker runner"
+            exit 1
+          fi
+          echo "PASS: action uses docker runner"
+      - name: Verify all required inputs are declared
+        run: |
+          for input in service_principal service_principal_password tenant registry repository git_access_token folder; do
+            if ! grep -q "$input:" action.yml; then
+              echo "FAIL: input '$input' not found in action.yml"
+              exit 1
+            fi
+            echo "PASS: input '$input' found"
+          done
+      - name: Verify optional inputs are declared
+        run: |
+          for input in image tag branch dockerfile build_args; do
+            if ! grep -q "$input:" action.yml; then
+              echo "FAIL: optional input '$input' not found in action.yml"
+              exit 1
+            fi
+            echo "PASS: optional input '$input' found"
+          done
