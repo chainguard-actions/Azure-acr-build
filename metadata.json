@@ -1,7 +1,0 @@
-{
-  "owner": "Azure",
-  "name": "acr-build",
-  "visibility": "internal",
-  "description": "Use ACR to build a container image",
-  "block_publish": false
-}
