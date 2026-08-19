@@ -1,4 +1,4 @@
-name: Test basic ACR build usage
+name: Test ACR build with optional inputs
 on:
   workflow_dispatch:
 jobs:
@@ -17,7 +17,12 @@ jobs:
           registry: fakeregistry
           repository: myrepo
           git_access_token: fake-git-token
-          folder: .
+          image: myimage
+          tag: v1.0.0
+          branch: main
+          folder: src
+          dockerfile: Dockerfile
+          build_args: '[{"KEY":"VALUE"}]'
 
       - name: Assert action ran and failed gracefully (no real Azure credentials)
         env:
