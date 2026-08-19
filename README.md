@@ -8,7 +8,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 | Version | Tag | Upstream commit |
 |---------|-----|-----------------|
-| v1 | [`v1`](https://github.com/chainguard-actions/Azure-acr-build/tree/v1) | — |
+| v1 | [`v1`](https://github.com/chainguard-actions/Azure-acr-build/tree/v1) | [`3b1ab7a`](https://github.com/Azure/acr-build/commit/3b1ab7abc16a67d6ce3983aed0537dd3a012ebb2) |
 
 ## Privacy
 
